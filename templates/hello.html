@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>第一个 ECharts 实例</title>
+    <!-- 引入 echarts.js -->
+    <script src="https://cdn.staticfile.org/echarts/4.3.0/echarts.min.js"></script>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 600px;height:400px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            grid: {
+                right: '20%'
+            },
+            title: {
+                text: '总流量统计'
+            },
+            tooltip: {},
+            legend: {
+                data:['总流量']
+            },
+            xAxis: {
+                data: ["1k","2k","3k","4k","5k","6k","7k","8k","9k","10k"]
+            },
+            yAxis: {},
+            series: [{
+                name: '总流量',
+                type: 'bar',
+                data: ['{{p[1000]}}', '{{p[2000]}}', '{{p[3000]}}', '{{p[4000]}}', '{{p[5000]}}', '{{p[6000]}}', '{{p[7000]}}', '{{p[8000]}}', '{{p[9000]}}', '{{p[9900]}}']
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+    {% for i in strange %}
+        <ul>
+            <li>
+                {{i}}
+            </li>
+        </ul>
+    {% endfor %}
+</body>
+</html>
